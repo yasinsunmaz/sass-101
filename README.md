@@ -8,7 +8,7 @@ SASS dosyaları .scss uzantılıdır. SASS dosyalarını .css uzantlı stil dosy
 
 ### Live SASS
 
-SASS dosyamızda her değişiklik olduğunda otomatik olarak ilgili dosya adında bir .cs dosyası oluşturması için "Live SASS Compiler" eklentisini kullanabilirsiniz.
+SASS dosyamızda her değişiklik olduğunda otomatik olarak ilgili dosya adında bir .css dosyası oluşturması için "Live SASS Compiler" eklentisini kullanabilirsiniz.
 
 ### Konular
 
