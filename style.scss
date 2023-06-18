@@ -1,4 +1,5 @@
 $body_color: white;
+//Başka bir scss dosyasını çağırma
 @import "reset";
 @import "colors";
 
@@ -23,6 +24,7 @@ h1 {
     color: $font_color;
 }
 
+//Elementler Arası SASS İşlemleri
 div {
     h2 {
         font-family: $font_name;
@@ -42,42 +44,345 @@ div.abc {
     h2 {
         font: {
             family: $font_name;
-            size: $font_size;            
-        };       
-        $font_color:pink; 
+            size: $font_size;
+        }
+
+        ;
+        $font_color: pink;
         color: $font_color
     }
 }
 
-@mixin fonts{
-    font-size:20px;
+//mixin ve include Kullanımı
+@mixin fonts {
+    font-size: 20px;
+    font-weight: normal;
+}
+
+@mixin font-bold {
     font-weight: bold;
 }
 
-@mixin margin($margin:0){//varsayılan değer verilebilir
-   margin:$margin;}
+p.bold {
+    @include font-bold();
+}
+
+@mixin margin($margin: 0) {
+    //varsayılan değer verilebilir
+    margin: $margin;
+}
+
 p {
     @include fonts();
     @include margin(30px);
 }
 
-.btn{
-border: 2px solid black;
-padding: 15px;
-font-size: 23px;
-text-align: center;
-border: 2px;
+.btn {
+    border: 2px solid black;
+    padding: 15px;
+    font-size: 23px;
+    text-align: center;
+    border: 2px;
 }
 
-.success{
-    @extend .btn;//Tanımlanmış olan stili başka bir stil içinde çağırabilsiniz
+.success {
+    @extend .btn; //Tanımlanmış olan stili başka bir stil içinde çağırabilsiniz
     background-color: green;
     color: white;
 }
 
 
-.info{
+.info {
     @extend .btn;
     background-color: orange;
     color: white;
+}
+
+//String Fonksiyonlar
+.quote::after {
+    //string ifade içerisine değer girme
+    content: quote($string: "yasinsunmaz.com");
+}
+
+.str-index::after {
+    //string ifade içerisindeki karakterin sırasını verir
+    content: "" + str-index($string: "yasinsunmaz.com", $substring: "c"); //Sonuçta content:13 döndürür
+}
+
+.str-insert::after {
+    //string ifadeye istenilen dizine ekleme yapar
+    content: str-insert($string: "yasinsunmaz.com", $insert: "https://", $index: 0);
+}
+
+.str-length::after {
+    //string ifade uzunluğunu bulur
+    content: "" + str-length($string: "yasinsunmaz.com");
+}
+
+.str-slice::after {
+    //string ifadeyi istenilen aralıkta böler
+    content: str-slice("yasinsunmaz.com", 2, 7);
+}
+
+.to-lower-case::after {
+    //string ifadeyi küçük harflere dönüştürür
+    content: to-lower-case($string: "YASINSUNMAZ.COM");
+}
+
+.to-upper-case::after {
+    //string ifadeyi büyük harflere dönüştürür
+    content: to-upper-case($string: "yasinsunmaz.com");
+}
+
+.unique-id::after {
+    //string benzersiz değer üretir
+    content: "" + unique-id();
+}
+
+.unquote::after {
+    //mevcut quote'yi ezer
+    content: "" + unquote($string: "yasinsunmaz.com");
+}
+
+//Numeric Fonksiyonlar
+.abs::after {
+    //eksi rakamı pozitif olarak değiştirir
+    content: "" + abs($number: -5);
+}
+
+.ceil::after {
+    //verilen sayıyı yukarıya tam sayıya yuvarlar
+    content: "" + ceil($number: 5.2);
+}
+
+.comparable::after {
+    //verilen değerleri karşılaştırır, aynı türde ise true değilse false döner
+    content: "" + comparable($number1: 10px, $number2: 20em);
+}
+
+.floor::after {
+    //verilen sayıyı aşağıya tam sayıya yuvarlar
+    content: "" + floor($number: 5.8);
+}
+
+.max::after {
+    //verilen sayı dizisinde en büyük değeri getirir
+    content: "" + max(5, 2, -9, 13, 8, 0);
+}
+
+.min::after {
+    //verilen sayı dizisinde en küçük değeri getirir
+    content: "" + min(5, 2, -9, 13, 8, 0);
+}
+
+.percentage::after {
+    //verilen sayıyı yüzde olarak döndürür
+    content: "" + percentage(0.8);
+}
+
+.random::after {
+    //rastgele sayı üretir
+    content: "" + random();
+}
+
+.random2::after {
+    //rastgele verilen değerler arasında sayı döndürür
+    content: "" + random($limit: 100);
+}
+
+.round::after {
+    //verilen sayı en yakın tam sayıya yuvarlar
+    content: "" + round($number: 1.3);
+}
+
+//List Fonksiyonları
+.append::after {
+    //verilen liste içine başka değer ekleme
+    content: "" + append((a b c d), e, auto);
+}
+
+.index::after {
+    //verilen listede istenen elemanın kaçıncı sırada olduğunu bulur
+    content: "" + index((a b c d), c);
+}
+
+.is-bracketed::after {
+    //verilen listede değerler köşeli paranter [] işerisinde olup olmama durumunu true false olarak geriye döner
+    content: "" + is-bracketed(1 2 3);
+}
+
+.join::after {
+    //verilen iki listeyi birleştirir. bracketed true yapılırsa [] içerisinde listeyi gösterir
+    content: "" + join($list1: (
+            a b c d),
+        $list2: (
+        1 2 3 4),
+        $separator: auto,
+        $bracketed: true)
+}
+
+.length::after {
+    //verilen listenin uzunluğunu verir
+    content: "" + length($list: (
+            a b c d e f g h))
+}
+
+.list-separator::after {
+    //verilen listede değerler köşeli paranter [] işerisinde olup olmama durumunu true false olarak geriye döner
+    content: "" + is-bracketed(1 2 3
+    );
+}
+
+.nth::after {
+    //verilen listede istenilen sıradaki elemanı getirme
+    content: "" + nth($list: (
+            a b c d e f g h),
+        $n: 7
+    );
+}
+
+.set-nth::after {
+    //verilen listede istenilen sıradaki elemanın değerini değiştirme
+    content: "" + set-nth($list: (
+            a b c d e f g h),
+        $n: 7,
+        $value: y
+    );
+}
+
+.zip::after {
+    //verilen değerleri sırasıyla birleştirir
+    content: "" + zip(1px 5px 10px, solid dashed dotted, red blue green);
+}
+
+//Map Fonksiyonlar
+$font_sizes : ("small":12px, "normal":18px, "large":24px);
+
+.map-get::after {
+    //verilen listedeki istenilen keyin değerini geri döndürür
+    content: "" + map-get($map: $font-sizes, $key: "normal");
+}
+
+.map-hash-key::after {
+    //verilen listede verilen key var mı true false olarak döner
+    content: "" + map-has-key($map: $font-sizes, $key: "normal");
+}
+
+.map-keys::after {
+    //verilen listedeki tüm keyleri döndürür
+    content: "" + map-keys($map: $font-sizes);
+}
+
+.map-values::after {
+    //verilen listedeki tüm değerleri getirir
+    content: "" + map-values($map: $font-sizes);
+}
+
+//Selector Fonksiyonlar
+.is-superselector::after {
+    //istenilen selectorde alt selector var mı true false olarak döner
+    content: "" + is-superselector("div", "div.abc");
+}
+
+.selector-append::after {
+    //verilen selectorleri birleştirir
+    content: "" + selector-append("div", ".new-class");
+}
+
+.selector-nest::after {
+    //verilen selectorleri arada boşluk bırakarak birleştirir
+    content: "" + selector-nest("ul", "li")
+}
+
+
+.selector-parse::after {
+    //verilen selectorleri tırnaklar içerisinde geri döndürür. Fakat burada string dönüştürdüğümüz için göremiyoruz.
+    content: "" + selector-parse("div h1 p .color");
+}
+
+.selector-replace::after {
+    //verilen selectorlerde istenileni değiştirebiliriz
+    content: "" + selector-replace("p.success", ".success", ".danger");
+}
+
+
+.selector-unify::after {
+    //verilen selectorleri karşılaştırır. Doğru bir karşılaştırma ise true yoksa false döner. Örneğin p slectoründe div olamayacağı için false döner.
+    content: "" + selector-unify("p", ".success");
+}
+
+.simple-selectors::after {
+    //verilen selectorleri birbirinden ayırır
+    content: "" + simple-selectors("div.alert.success");
+}
+
+//Introspection Fonksiyonlar
+.feature-exists::after {
+    //SASS içerisinde feature var mı true false döner
+    content: "" + feature-exists("at-error");
+}
+
+.function-exists::after {
+    //SASS içerisinde fonksiyon var mı true false döner
+    content: "" + function-exists("inspect");
+}
+
+.global-variable-exists::after {
+    //SASS içerisinde global değişken var mı true false döner
+    content: "" + global-variable-exists($name: font-sizes);
+}
+
+.inspect::after {
+    //Verilen değişkenin adını string olarak geri döndürür
+    content: "" + inspect("font-sizes");
+}
+
+.mixin-exists::after {
+    //SASS içerisinde mixin var mı true false döner
+    content: "" + mixin-exists("margin");
+}
+
+.type-of::after {
+    //Verilen değerin veri tipini geri döndürür
+    content: "" + type-of($value: "yasinsunmaz.com");
+}
+
+.unit::after {
+    //Verilen değerin birimini geri döndürür
+    content: "" + unit($number: 15px);
+}
+
+.unitless::after {
+    //Verilen değerin birimini geri döndürür
+    content: "" + unitless($number: 45);
+}
+
+.variable-exists::after {
+    //Mevcut dosyada değişken var mı true false döner
+    content: "" + variable-exists($name: font-sizes);
+}
+
+//Koşullar
+$title: red;
+$sub-title: green;
+
+p.if {
+    @if $title==red {
+        color: blue;
+    }
+
+    @else if $sub-title==green {
+        color: yellow;
+    }
+
+    @else {
+        color: black
+    }
+}
+
+//Döngüler
+@for $x from 1 through 10 {
+    .font-size-#{$x} {
+        font-size: 0px + $x;
+    }
 }

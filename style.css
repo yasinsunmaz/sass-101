@@ -36,9 +36,13 @@ div.abc h2 {
   color: pink;
 }
 
+p.bold {
+  font-weight: bold;
+}
+
 p {
   font-size: 20px;
-  font-weight: bold;
+  font-weight: normal;
   margin: 30px;
 }
 
@@ -58,4 +62,240 @@ p {
 .info {
   background-color: orange;
   color: white;
+}
+
+.quote::after {
+  content: "yasinsunmaz.com";
+}
+
+.str-index::after {
+  content: "13";
+}
+
+.str-insert::after {
+  content: "https://yasinsunmaz.com";
+}
+
+.str-length::after {
+  content: "15";
+}
+
+.str-slice::after {
+  content: "asinsu";
+}
+
+.to-lower-case::after {
+  content: "yasinsunmaz.com";
+}
+
+.to-upper-case::after {
+  content: "YASINSUNMAZ.COM";
+}
+
+.unique-id::after {
+  content: "u4srsvh";
+}
+
+.unquote::after {
+  content: "yasinsunmaz.com";
+}
+
+.abs::after {
+  content: "5";
+}
+
+.ceil::after {
+  content: "6";
+}
+
+.comparable::after {
+  content: "false";
+}
+
+.floor::after {
+  content: "5";
+}
+
+.max::after {
+  content: "13";
+}
+
+.min::after {
+  content: "-9";
+}
+
+.percentage::after {
+  content: "80%";
+}
+
+.random::after {
+  content: "0.8002431553";
+}
+
+.random2::after {
+  content: "93";
+}
+
+.round::after {
+  content: "1";
+}
+
+.append::after {
+  content: "a b c d e";
+}
+
+.index::after {
+  content: "3";
+}
+
+.is-bracketed::after {
+  content: "false";
+}
+
+.join::after {
+  content: "[a b c d 1 2 3 4]";
+}
+
+.length::after {
+  content: "8";
+}
+
+.list-separator::after {
+  content: "false";
+}
+
+.nth::after {
+  content: "g";
+}
+
+.set-nth::after {
+  content: "a b c d e f y h";
+}
+
+.zip::after {
+  content: "1px solid red, 5px dashed blue, 10px dotted green";
+}
+
+.map-get::after {
+  content: "18px";
+}
+
+.map-hash-key::after {
+  content: "true";
+}
+
+.map-keys::after {
+  content: '"small", "normal", "large"';
+}
+
+.map-values::after {
+  content: "12px, 18px, 24px";
+}
+
+.is-superselector::after {
+  content: "true";
+}
+
+.selector-append::after {
+  content: "div.new-class";
+}
+
+.selector-nest::after {
+  content: "ul li";
+}
+
+.selector-parse::after {
+  content: "div h1 p .color";
+}
+
+.selector-replace::after {
+  content: "p.danger";
+}
+
+.selector-unify::after {
+  content: "p.success";
+}
+
+.simple-selectors::after {
+  content: "div, .alert, .success";
+}
+
+.feature-exists::after {
+  content: "true";
+}
+
+.function-exists::after {
+  content: "true";
+}
+
+.global-variable-exists::after {
+  content: "true";
+}
+
+.inspect::after {
+  content: '"font-sizes"';
+}
+
+.mixin-exists::after {
+  content: "true";
+}
+
+.type-of::after {
+  content: "string";
+}
+
+.unit::after {
+  content: "px";
+}
+
+.unitless::after {
+  content: "true";
+}
+
+.variable-exists::after {
+  content: "true";
+}
+
+p.if {
+  color: blue;
+}
+
+.font-size-1 {
+  font-size: 1px;
+}
+
+.font-size-2 {
+  font-size: 2px;
+}
+
+.font-size-3 {
+  font-size: 3px;
+}
+
+.font-size-4 {
+  font-size: 4px;
+}
+
+.font-size-5 {
+  font-size: 5px;
+}
+
+.font-size-6 {
+  font-size: 6px;
+}
+
+.font-size-7 {
+  font-size: 7px;
+}
+
+.font-size-8 {
+  font-size: 8px;
+}
+
+.font-size-9 {
+  font-size: 9px;
+}
+
+.font-size-10 {
+  font-size: 10px;
 }/*# sourceMappingURL=style.css.map */

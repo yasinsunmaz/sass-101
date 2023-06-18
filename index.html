@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,28 +8,151 @@
     <title>Yasin SUNMAZ SASS-101</title>
     <link rel="stylesheet" href="./style.css">
 </head>
-<body>
-    <h1>Başlık 1</h1>
-    <h2>Başlık 2</h2>
 
+<body>
+    <h1>Değişken Tanımlama</h1>
+    <p>Değişkenlerin başına $ koyarak istediğiniz değeri atayabilirsiniz.</p>
+    <p class="bold">Örnek</p>
+    <p>$body_color: white;</p>
+    <h2>Elementler Arası SASS İşlemleri</h2>
+    <p class="bold">Örnek</p>
+    <p>
+        div{
+        h2{
+        font-family: $font_name;
+        font-size: $font_size;
+        $font_color: gray;
+        color: $font_color
+        }
+        }
+    </p>
     <div>
-        <h1>Div Başlık 1</h1>
-        <h2>Div Başlık 2</h2>
+        <h1>Başka bir scss dosyasını çağırma</h1>
+        <p class="bold">Örnek</p>
+        <p>@import "reset";</p>
+        <h2>mixin ve include Kullanımı</h2>
+        <p>mixin ile bir stil tanımı yapıp istenirse başka bir element, class veya id için include ile çağırılarak stil
+            tanımlaması yapılabilir.</p>
+        <p class="bold">Örnek</p>
+        <p>
+            @mixin fonts{
+            font-size:20px;
+            font-weight: normal;
+            }
+            p {
+            @include fonts();
+            }
+        </p>
+        <p>mixin tanımı yaparken parametreli olacak şekilde de yapabilirsiniz. @include margin(10); olarak
+            çağırdığınızda ilgili yerde "margin:10;" stilini uygulayacaktır.</p>
+        <p class="bold">Örnek</p>
+        <p>
+            @mixin margin($margin:0){
+            margin:$margin;
+            }
+        </p>
     </div>
 
     <div class="abc">
         <h2>
-            ABC
+            extend Kullanımı
         </h2>
+        <p>Tanımlanmış olan stili başka bir stil içinde çağırabilsiniz.</p>
+        <p>
+            @extend .btn; //şeklinde stil içinde stil çağırabilirsiniz.
+        </p>
     </div>
 
     <p>Açıklama metni ve daha fazlası...</p>
 
     <hr>
-    
+
     <div>
         <button type="submit" class="success">Success Button</button>
         <button type="submit" class="info">Info Button</button>
     </div>
+
+    <div>
+        <h1>String Fonksiyonları</h1>
+        <p class="quote">quote: </p>
+        <p class="str-index">str-index: </p>
+        <p class="str-insert">str-insert: </p>
+        <p class="str-length">str-length: </p>
+        <p class="str-slice">str-slice: </p>
+        <p class="to-lower-case">to-lower-case: </p>
+        <p class="to-upper-case">to-upper-case: </p>
+        <p class="unique-id">unique-id: </p>
+        <p class="unquote">unquote: </p>
+    </div>
+    <div>
+        <h1>Numeric Fonksiyonlar</h1>
+        <p class="abs">abs: </p>
+        <p class="ceil">ceil: </p>
+        <p class="comparable">comprable: </p>
+        <p class="floor">floor: </p>
+        <p class="max">max: </p>
+        <p class="min">min: </p>
+        <p class="percentage">percentage: </p>
+        <p class="random">random: </p>
+        <p class="random2">random2: </p>
+        <p class="round">round: </p>
+    </div>
+    <div>
+        <h1>List Fonksiyonları</h1>
+        <p class="append">append: </p>
+        <p class="index">index: </p>
+        <p class="is-bracketed">is-bracketed: </p>
+        <p class="join">join: </p>
+        <p class="length">length: </p>
+        <p class="list-separator">list-separator: </p>
+        <p class="nth">nth: </p>
+        <p class="set-nth">set-nth: </p>
+        <p class="zip">zip: </p>
+    </div>
+    <div>
+        <h1>Map Fonsiyonları</h1>
+        <p class="map-get">map-get: </p>
+        <p class="map-hash-key">map-hash-key: </p>
+        <p class="map-keys">map-keys: </p>
+        <p class="map-values">map-values: </p>
+    </div>
+    <div>
+        <h1>Selector Fonksiyonlar</h1>
+        <p class="is-superselector">is-superselector: </p>
+        <p class="selector-append">selector-append: </p>
+        <p class="selector-nest">selector-nest: </p>
+        <p class="selector-parse">selector-parse: </p>
+        <p class="selector-replace">selector-replace: </p>
+        <p class="selector-unify">selector-unify: </p>
+        <p class="simple-selectors">simple-selectors: </p>
+    </div>
+    <div>
+        <h1>Introspection Fonksiyonlar</h1>
+        <p class="feature-exists">feature-exists: </p>
+        <p class="function-exists">function-exists: </p>
+        <p class="global-variable-exists">global-variable-exists: </p>
+        <p class="inspect">inspect: </p>
+        <p class="mixin-exists">mixin-exists: </p>
+        <p class="type-of">type-of: </p>
+        <p class="unit">unit: </p>
+        <p class="unitless">unitless: </p>
+        <p class="variable-exists">variable-exists: </p>
+    </div>
+    <div>
+        <h1>Koşullar</h1>
+        <p class="if">Koşula göre yazı rengi</p>
+    </div>
+    <div>
+        <h1>Döngüler</h1>
+        <p>Scss sayesinde for döngülerini de kullanabiliriz. Aşağıdaki kullanım ile ".font-size-1" den başlayıp
+            ".font-size-10" a kadar css oluşturacaktır.</p>
+        <p>@for $x from 1 through 10{
+            .font-size-#{$x}{
+            font-size: 0px + $x;
+            }
+            }</p>
+        <p class="font-size-5">Döndü ile oluşan class ı kullandık</p>
+    </div>
 </body>
+
 </html>
