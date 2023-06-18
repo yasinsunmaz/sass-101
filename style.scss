@@ -1,0 +1,83 @@
+$body_color: white;
+@import "reset";
+@import "colors";
+
+body {
+    background-color: $body_color;
+}
+
+$font_name: "Times New Roman";
+$font_size: 45px;
+$font_color: rgba(176, 30, 30, 0.8);
+
+h2 {
+    font-family: $font_name;
+    font-size: $font_size;
+    $font_color: $color; //important yazarsa mevcut değişken değerini ezer
+    color: $font_color
+}
+
+h1 {
+    font-family: $font_name;
+    font-size: $font_size;
+    color: $font_color;
+}
+
+div {
+    h2 {
+        font-family: $font_name;
+        font-size: $font_size;
+        $font_color: gray;
+        color: $font_color
+    }
+
+    h1 {
+        font-family: $font_name;
+        font-size: $font_size;
+        color: $font_color;
+    }
+}
+
+div.abc {
+    h2 {
+        font: {
+            family: $font_name;
+            size: $font_size;            
+        };       
+        $font_color:pink; 
+        color: $font_color
+    }
+}
+
+@mixin fonts{
+    font-size:20px;
+    font-weight: bold;
+}
+
+@mixin margin($margin:0){//varsayılan değer verilebilir
+   margin:$margin;}
+p {
+    @include fonts();
+    @include margin(30px);
+}
+
+.btn{
+border: 2px solid black;
+padding: 15px;
+font-size: 23px;
+text-align: center;
+border: 2px;
+}
+
+.success{
+    @extend .btn;//Tanımlanmış olan stili başka bir stil içinde çağırabilsiniz
+    background-color: green;
+    color: white;
+}
+
+
+.info{
+    @extend .btn;
+    background-color: orange;
+    color: white;
+}
